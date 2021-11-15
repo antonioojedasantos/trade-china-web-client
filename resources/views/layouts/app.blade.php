@@ -8,7 +8,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-   
+    <link href="{{ asset('css/register.css') }}" rel="stylesheet"/>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -67,6 +67,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Sign Up</a></li>
+                        <li class="nav-item"><a class="nav-link" @click="NuevoDato()">Nuevo</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Log In</a></li>
                     </ul>
                 </div>

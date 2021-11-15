@@ -16,8 +16,10 @@ class CreateDatosPSTable extends Migration
         Schema::create('datos_p_s', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('posicion');
-            $table->decimal('salario',10,2);
+            $table->string('apellido');
+            $table->string('telefono');
+            $table->string('email');
+            $table->string('code');
             $table->timestamps();
         });
     }

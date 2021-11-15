@@ -13,17 +13,17 @@ var app = new Vue({
             });
         },
         NuevoDato(){
-            console.log('Nuevo Dato');
+            console.log('Nuevo Dato antonio');
 
             Swal.mixin({
               
                 confirmButtonText: 'Next &rarr;',
                 showCancelButton: true,
-                progressSteps: ['1', '2', '3']
+                progressSteps: ['1', '2', '3', '4']
               }).queue([
                 {
-                    title: 'Digita tu nombre completo',
-                    text:  'Nombre y apellido',
+                    title: 'Digita tu nombre',
+                    text:  'Nombre ',
                     input: 'text',
                     inputValidator: (value) => {
                         if (!value) {
@@ -33,45 +33,50 @@ var app = new Vue({
                       }
                 },
                 {
-                    title: 'Selecciona la posicion',
-                    text:  'Posicion de este empleado',
-                    input: 'select',
-                    inputOptions: {
-                      Auditor: 'Auditor',
-                      Soporte: 'Soporte',
-                      Seguridad: 'Seguridad'                      
-                    },
-                    inputPlaceholder: 'Selecciona una posicion',
-                    inputValidator: (value) => {
-                        if (!value) {
-                          toastr.error('Necesitas seleccionar una opcion','Error');  
-                          return ' '
-                        }
+                  title: 'Digita tu apellido',
+                  text:  'Apellido ',
+                  input: 'text',
+                  inputValidator: (value) => {
+                      if (!value) {
+                        toastr.error('Debes digitar un apellido','Error');  
+                        return ' '
                       }
-                },
-                {
-                    title: 'Escribe el salario de este empleado',
-                    text:  'Este campo acepta decimales',
-                    input: 'number',
-                    inputAttributes: {
-                        min: 4,                        
-                        step: 0.01
-                      },
-                    inputValidator: (value) => {
-                        if (!value) {
-                          toastr.error('Debes escribir un salario','Error');  
-                          return ' '
-                        }
-                      }
-                },
+                    }
+              },{
+                title: 'Digita tu telefóno',
+                text:  'Telefono ',
+                input: 'text',
+                inputValidator: (value) => {
+                    if (!value) {
+                      toastr.error('Debes digitar un numero telefonico','Error');  
+                      return ' '
+                    }
+                  }
+            },
+            {
+              title: 'Digita tu Correo electronico',
+              text:  'Email ',
+              input: 'text',
+              inputValidator: (value) => {
+                  if (!value) {
+                    toastr.error('Debes digitar un email','Error');  
+                    return ' '
+                  }
+                }
+          },
                 
               ]).then( async  (result) => {
                 if (result.value) {
-
+                  var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHJKMNPQRTUVWXYZ2346789";
+                  var contraseña = "";
+                  for (i=0; i<20; i++) contraseña +=caracteres.charAt(Math.floor(Math.random()*caracteres.length)); 
+                  console.log(contraseña)
                   datos= {
                       nombre   : result.value[0],
-                      posicion : result.value[1],
-                      salario  : result.value[2],
+                      apellido : result.value[1],
+                      telefono  : result.value[2],
+                      email : result.value[3],
+                      code : contraseña,
                 
                   }   
                   //console.log(datos);

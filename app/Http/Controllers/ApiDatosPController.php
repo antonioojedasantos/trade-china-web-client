@@ -38,11 +38,13 @@ class ApiDatosPController extends Controller
         $datos = new DatosP;
 
         $datos->nombre   = $request->nombre;
-        $datos->posicion = $request->posicion;
-        $datos->salario  = $request->salario;
+        $datos->apellido   = $request->apellido;
+        $datos->telefono = $request->telefono;
+        $datos->email  = $request->email;
+        $datos->code  = $request->code;
         $datos->save();        
         
-        return 'Datos guardados correctamente';
+        return 'Datos guardados correctamente, revisa tu correo';
     }
 
     /**
@@ -77,8 +79,11 @@ class ApiDatosPController extends Controller
     public function update(Request $request, DatosP $datosp)
     {
         $datosp->nombre   = $request->nombre;
-        $datosp->posicion = $request->posicion;
-        $datosp->salario  = $request->salario;
+        $datosp->apellido = $request->apellido;
+        $datosp->telefono  = $request->telefono;
+        $datosp->email  = $request->email;
+        $datosp->code  = $request->code;
+
         $datosp->save();   
 
         return 'Datos editados correctamente';
